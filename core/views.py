@@ -6,6 +6,9 @@ from rest_framework.pagination import PageNumberPagination
 from django.db.models import Q
 from accounts.models import CustomUser
 from core.serializers import *
+from django.core.cache import cache
+from datetime import timedelta
+
 
 class UserSearchView(APIView):
     def get(self, request):
@@ -33,8 +36,16 @@ class SendFriendRequestView(APIView):
         receiver = CustomUser.objects.get(id=user_id)
         sender = request.user
 
+        cache_key = f"friend_request_count_{sender.id}"
+        friend_request_count = cache.get(cache_key, 0)
+
+        if friend_request_count >= 3:
+            return Response({"error": "You have sent too many friend requests. Please wait a while before sending more."}, status=status.HTTP_429_TOO_MANY_REQUESTS)
+
         if FriendRequest.objects.filter(sender=sender, receiver=receiver).exists():
             return Response({"error": "Friend request already sent"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        cache.set(cache_key, friend_request_count + 1, timeout=60)  
 
         friend_request = FriendRequest(sender=sender, receiver=receiver)
         friend_request.save()
