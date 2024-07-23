@@ -2,6 +2,9 @@
 
 This project is a Django-based backend system that implements user authentication, friend request functionality, and rate limiting on friend requests. It uses Django REST Framework for API endpoints.
 
+#Documentation
+Postman = https://documenter.getpostman.com/view/23480640/2sA3kXCzMt
+
 ## Features
 
 - User signup and login
