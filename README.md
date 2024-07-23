@@ -21,7 +21,5 @@ This project is a Django-based backend system that implements user authenticatio
 ### Setup Instructions
 
 1. **Clone the repository**
-
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone [<repository-url>](https://github.com/ompakash/friendrequests.git)
+   
