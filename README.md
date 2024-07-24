@@ -14,18 +14,18 @@ This project is a Django-based backend system that implements user authenticatio
 
 ## Installation
 
-- create a virtual env "python -m virtualenv demoEnv"
-- activte virtual env "demoEnv\Scripts\activate"
 - clone repo "git clone https://github.com/ompakash/friendrequests.git"
 - "cd friendrequests"
-- install requirements "pip install -r requirements.txt "
-- run server "python manage.py runserver"
+- "docker compose up -d --build"
+
+
 
 ### Prerequisites
 
 - Python 3.12.4
 - Django 5.0.7
 - Django REST Framework 3.15.2
+- Docker 
 
 ### Setup Instructions
 
