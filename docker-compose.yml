@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  friends:
+    image: friends:0.0.1
+    build: .
+    container_name: friends-ctr
+    ports:
+      - "8000:8000"
